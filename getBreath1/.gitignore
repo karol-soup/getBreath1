@@ -1,0 +1,10 @@
+# Visual Studio files
+.vs
+.vs/*
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+/x64/Debug
+
+a.out
