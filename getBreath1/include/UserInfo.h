@@ -3,10 +3,16 @@
 #include "Date.h"
 #include "Mood.h"
 
-struct UserInfo {
+using namespace std;
+
+class UserInfo {
 	std::string name;
 	Date date;
 	short int cycle;
 	Mood before;
 	Mood after;
+public:
+	UserInfo() = default;
+	
+
 };
