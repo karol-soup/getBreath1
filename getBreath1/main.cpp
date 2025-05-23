@@ -5,7 +5,8 @@
 #include "include/Date.h"
 #include "include/Mood.h"
 #include "include/User.h"
-#include "include/beginBreathing.h"
+#include "include/BasicUser.h"
+#include "include/PremiumUser.h"
 #include "include/utils.h"
 #include <map>
 
@@ -14,12 +15,8 @@ using namespace std;
 
 int main()
 {
-
-
-	logUser(user);
-
-	getSummary(moodMap, user);
-	
+	BasicUser user;
+	user.setUser();
 	return 0;
 }
 
