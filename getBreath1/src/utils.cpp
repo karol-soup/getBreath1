@@ -15,21 +15,6 @@
 using namespace std;
 using namespace std::chrono_literals;
 
-void timer(const int& cycles) {
-
-	for (int i = 0;i < cycles;i++) {
-		cout << "Breath in...4.." << endl;
-		countdown(3);//counts down
-
-		cout << "Hold...7.." << endl;
-		countdown(6);
-
-		cout << "Breath out...8.." << endl;
-		countdown(7);
-
-	}
-}
-
 shared_ptr<vector<string>> getQuotes() {
 	fstream file;
 	file.open("Quotes.txt", ios::in);
@@ -53,74 +38,17 @@ void printQuotes(shared_ptr<vector<string>>quotes) {
 	int index = rand() % quotes->size();
 	cout << quotes->at(index) << endl;
 }
+void timer(const int& cycles) {
 
-void getSummary(const map<Mood, string>& moodMap, const User& user) {
+	for (int i = 0;i < cycles;i++) {
+		cout << "Breath in...4.." << endl;
+		countdown(3);//counts down
 
-	fstream userLog;
-	userLog.open("userLogs.dat", ios::in | ios::binary); //opening file in input mode, and ensuring previos work isnt erased
+		cout << "Hold...7.." << endl;
+		countdown(6);
 
-	auto users = make_unique<vector<User>>();
-	unordered_map<Mood, int> moodCounts;
-	User biInfo;
-
-	// i want to use unordered map to see how much times the user felt after the cycle. I want to retrive the data from my bnary file
-	if (!userLog.is_open()) {
-		cout << "couldnt open file" << endl;
-		return;
-	}
-	else {
-		//converts to har to read
-		while (userLog.read(reinterpret_cast<char*>(&biInfo), sizeof(User))) {
-			users->push_back(biInfo);// infor that was retrtived will be put in vector
-		}
-		userLog.close();
-	}
-
-	if (users->empty()) {
-		cout << "No log data on file.\n";
-	}
-	else {
-
-		cout << endl << user.name << "'s summary of log history\n";
-		for (const auto& user : *users) { // derefrenceing 
-			moodCounts[user.before]++; //will get mood(key) and add 1 each iteration of the same mood
-		}
-		cout << "Before taking a breath:\n";
-
-		for (const auto& pair : moodCounts) {
-			cout <<"You felt: " << moodMap.at(pair.first) << " " << pair.second << " time(s)\n";
-		}
-
-		moodCounts.clear();
-
-		cout << "After taking a breath:\n";
-		for (const auto& user : *users) { // derefrenceing 
-			moodCounts[user.after]++; //will get mood(key) and add 1 each iteration of the same mood
-		}
-
-		for (const auto& pair : moodCounts) {
-			cout << "You felt: " << moodMap.at(pair.first) << " " << pair.second << " time(s)\n";
-		}
-	
-
-		cout << "Remember you breathe from time to time :)\n";
-	}
-
-}
-
-void logUser(User& user) {
-	fstream userLog; //creating file
-	userLog.open("userLogs.dat", ios::out | ios::app | ios::binary); //opening file in input mode, and ensuring previos work isnt erased
-
-
-	if (!userLog.is_open()) {
-
-		cout << "Couldnt open file" << endl;
-	}
-	else {
-		userLog.write(reinterpret_cast<char*>(&user), sizeof(User));//writing in info about user
-
-		userLog.close();
+		cout << "Breath out...8.." << endl;
+		countdown(7);
 
 	}
 }
@@ -136,7 +64,7 @@ void beginBreathing(const User& user) {
 	system("cls");
 	auto quotes = getQuotes();
 	printQuotes(quotes);
-	timer(user.cycleCount);
+	timer(user.getCycle());
 	system("cls");
 }
 //in order to test
