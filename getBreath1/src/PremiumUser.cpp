@@ -1,9 +1,10 @@
 #include "../include/PremiumUser.h"
+#include "../include/Utils.h"
 #include<iostream>
 using namespace std;
 
 void PremiumUser::setCycle() {
-	cout << "Cycles with basic getBreath subscrition is up to 10.\n";
+	cout << "Cycles with basic getBreath subscrition is up to 5.\n";
 	getCycle();
 }
 void PremiumUser::displayInfo() const {
