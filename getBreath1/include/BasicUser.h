@@ -4,10 +4,11 @@
 class BasicUser : public User { // Inherits all methods and attributes of User
 public:
     // Default constructor for BasicUser
-    BasicUser() : User() { 
-        cycleCount = 2; //sets the specific cycle count for BasicUser
-    }
- 
+    BasicUser() : User() {}
+    
     // overrides base class to show basic user
+    void setCycle() override;
     void displayInfo() const override;
+    void getSummary() const override;
+    void setUser() override;
 };
