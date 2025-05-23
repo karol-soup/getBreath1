@@ -34,6 +34,5 @@ public:
    // Poly  
    virtual void displayInfo() const;  
    virtual void getSummary() const;  
-   virtual void getUsers() const;  
-   unique_ptr<vector<User>> getUsers();  
+
 };
