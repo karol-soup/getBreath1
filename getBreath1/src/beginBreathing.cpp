@@ -2,12 +2,12 @@
 #include <memory>
 #include <vector>
 #include <string>
-#include "../include/UserInfo.h"
+#include "../include/User.h"
 #include "../include/getfunctions.h"
 
 using namespace std;
 
-void beginBreathing(const UserInfo& user) {
+void beginBreathing(const User& user) {
 	system("cls");
 	auto quotes = getQuotes();
 	printQuotes(quotes);
