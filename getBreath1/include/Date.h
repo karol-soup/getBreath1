@@ -6,6 +6,9 @@ class Date {
 	short int day;
 	short int year;
 public:
+	Date() :month{ 1 }, day{ 1 }, year{ 2000 } {};//default constructor
+	Date(int month, int day, int year);
+
 	friend inline std::istream& operator>>(istream& input, Date& date) { // will manipulate how we recive input
 		char slash;
 		while (true) {
@@ -39,4 +42,6 @@ public:
 
 		return output;
 	}
+
+	Date getDate();
 };

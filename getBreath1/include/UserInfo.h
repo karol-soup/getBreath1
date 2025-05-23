@@ -5,14 +5,27 @@
 
 using namespace std;
 
-class UserInfo {
-	std::string name;
+class User {
+	string name;
 	Date date;
-	short int cycle;
-	Mood before;
-	Mood after;
+	short int cycleCount;
+	Mood moodBefore;
+	Mood moodAfter;
 public:
-	UserInfo() = default;
-	
+    // Default constructor
+    User() :name{ " " }, date{}, cycleCount(0), moodBefore{ Neutral }, moodAfter{ Neutral } {};
+    virtual ~User() = 0;
 
+    //setters
+    void setName();
+    void setDate();
+    void setCycle();
+    void setBeforeMood(Mood newMood);
+    void setAfterMood(Mood newMood);
+    //getters
+    string getName() const;
+    Date getDate() const;
+    short int getCycle() const;
+    Mood getBeforeMood() const;
+    Mood getAfterMood() const;
 };

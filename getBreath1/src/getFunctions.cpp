@@ -16,7 +16,9 @@
 using namespace std;
 using namespace std::chrono_literals;
 
-Date getDate() {
+Date::Date(int month, int day, int year) : month{ month }, day{ day }, year{ year } {};
+
+Date Date:: getDate() {
 	Date date;
 	cout << "What is today date? (MM/DD/YYYY)\n";
 	cin >> date;
@@ -53,7 +55,8 @@ Mood getMood() {
 
 	return static_cast <Mood>(mood);
 }
-string getValidName() {
+//User setters
+void User::setName(){
 	string name;
 	cout << "I'm getBreath what's your name?\n";
 	while (true) {
@@ -68,10 +71,10 @@ string getValidName() {
 			break;
 		}
 	}
-	return name;
+	this->name = name;
 }
-
-short int getCycle() {
+void User::setDate() { this->date = getDate();}
+void User::setCycle() {
 	short int cycles;
 	cout << "How many breathing cycles would you like to do today? \n";
 	while (true) {
@@ -90,8 +93,16 @@ short int getCycle() {
 			break;
 		}
 	}
-	return cycles;
+	this-> cycleCount = cycles;
 }
+void User::setBeforeMood(Mood newMood) { this->moodBefore = getMood(); }
+void User::setAfterMood(Mood newMood) { this->moodAfter = getMood(); }
+//User getters
+string User::getName() const { return name; }
+Date User::getDate() const { return date; }
+short int User::getCycle() const { return cycleCount; }
+Mood User::getBeforeMood() const { return moodBefore; }
+Mood User::getAfterMood() const { return moodAfter; }
 
 void countdown(const int& num) {
 	this_thread::sleep_for(1s);// pause for 1 sec
@@ -209,4 +220,34 @@ void getSummary(const map<Mood, string>& moodMap, const UserInfo& user) {
 		cout << "Remember you breathe from time to time :)\n";
 	}
 
+}
+
+void min() {
+
+
+
+	while (true) {
+		cin >> *this; // object
+		try {
+			if (cin.fail()) {
+				cin.clear();
+				cin.ignore(numeric_limits <streamsize>::max(), '\n');
+				throw invalid_argument("Invalid format");
+			}
+			if (this->numerator == 0 || this->denominator == 0) {
+				throw out_of_range("numerator or denominator can not equal 0");
+			}
+			else {
+				this->convertedFraction = static_cast<double>(this->numerator) / this->denominator; // FIX: Cast to double to avoid integer division
+				break;
+			}
+		}
+		catch (const invalid_argument& e) {
+			cout << e.what() << endl;
+		}
+		catch (const out_of_range& e) {
+			cout << e.what() << endl;
+		}
+	}
+}
 }
