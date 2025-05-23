@@ -1,36 +1,39 @@
-#pragma once
-#include <string>
-#include "Date.h"
-#include "Mood.h"
+#pragma once  
+#include <string>  
+#include "Date.h"  
+#include "Mood.h"  
+#include <memory>  
+using namespace std;  
 
-using namespace std;
+class User {  
+private:  
+   string name;  
+   Date date;  
+   short int cycleCount;  
+   Mood moodBefore;  
+   Mood moodAfter;  
+public:  
+   // Default constructor  
+   User() :name{ " " }, date{}, cycleCount(0), moodBefore{ Neutral }, moodAfter{ Neutral } {};  
+   virtual ~User() {}; // Change pure virtual destructor to a virtual destructor  
 
-class User {
-protected:
-	string name;
-	Date date;
-	short int cycleCount;
-	Mood moodBefore;
-	Mood moodAfter;
-public:
-    // Default constructor
-    User() :name{ " " }, date{}, cycleCount(0), moodBefore{ Neutral }, moodAfter{ Neutral } {};
-    virtual ~User() = 0;
-   
-    //setters
-    void setName();
-    void setDate();
-    void setCycle();
-    void setBeforeMood(Mood newMood);
-    void setAfterMood(Mood newMood);
+   // Setters  
+   void setName();  
+   void setDate();  
+   void setCycle();  
+   void setBeforeMood(Mood newMood);  
+   void setAfterMood(Mood newMood);  
 
-    //getters
-    string getName() const;
-    Date getDate() const;
-    short int getCycle() const;
-    Mood getBeforeMood() const;
-    Mood getAfterMood() const;
+   // Getters  
+   string getName() const;  
+   Date getDate() const;  
+   short int getCycle() const;  
+   Mood getBeforeMood() const;  
+   Mood getAfterMood() const;  
 
-    //poly
-    virtual void displayInfo() const;
+   // Poly  
+   virtual void displayInfo() const;  
+   virtual void getSummary() const;  
+   virtual void getUsers() const;  
+   unique_ptr<vector<User>> getUsers();  
 };
