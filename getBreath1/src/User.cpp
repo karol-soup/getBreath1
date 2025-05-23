@@ -1,5 +1,4 @@
 #include "../include/Date.h"
-#include "../include/Mood.h"
 #include "../include/User.h"
 #include "../include/utils.h"
 #include <iostream>
@@ -30,7 +29,11 @@ void User::setName() {
 	}
 	this->name = name;
 }
-void User::setDate() { this->date = getDate(); }
+void User::setDate() {
+	Date date;
+	date.setDate();
+	this->date = date.getDate();
+}
 void User::setCycle() {
 	short int cycles;
 	cout << "How many breathing cycles would you like to do today? \n";
@@ -52,24 +55,35 @@ void User::setCycle() {
 	}
 	this->cycleCount = cycles;
 }
-void User::setBeforeMood(Mood newMood) { this->moodBefore = getMood(); }
-void User::setAfterMood(Mood newMood) { this->moodAfter = getMood(); }
+void User::setBeforeMood() { this->moodBefore = getMood(); }
+void User::setAfterMood() { this->moodAfter = getMood(); }
 
 //User getters
 string User::getName() const { return name; }
 Date User::getDate() const { return date; }
 short int User::getCycle() const { return cycleCount; }
+Mood User::getMood() const{
+	short int mood;
+	cout << "Using our scale 1-5, how are you feeling at the moment?\n"
+		<< "(1 - Sad, 2 - Frustrated, 3 - Neutral, 4 - Happy, 5 - Calm)\n";
+	while (true) {
+		cin >> mood;
+		if (cin.fail()) {
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << "Invalid input. Please try again.\n";
+		}
+		else if (!isValidMood(mood)) {
+			cout << "Input must be between 1-5. Please try again.\n";
+		}
+		else break;
+	}
+
+	return static_cast <Mood>(mood);
+}
 Mood User::getBeforeMood() const { return moodBefore; }
 Mood User::getAfterMood() const { return moodAfter; }
 
-void User::setUser() {
-	setName();
-	setDate();
-	getCycle();
-	getBeforeMood();
-	beginBreathing(*this);
-	getAfterMood();
-}
 void User::displayInfo() const {
 	cout << "--- User Information ---\n";
 	cout << "Name: " << name << endl;
