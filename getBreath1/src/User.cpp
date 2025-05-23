@@ -62,6 +62,14 @@ short int User::getCycle() const { return cycleCount; }
 Mood User::getBeforeMood() const { return moodBefore; }
 Mood User::getAfterMood() const { return moodAfter; }
 
+void User::setUser() {
+	setName();
+	setDate();
+	getCycle();
+	getBeforeMood();
+	beginBreathing(*this);
+	getAfterMood();
+}
 void User::displayInfo() const {
 	cout << "--- User Information ---\n";
 	cout << "Name: " << name << endl;
@@ -113,7 +121,7 @@ void User::getSummary() const {
 
 }
 
-void logUser(User& user) {
+void User::logToFile(User& user) {
 	fstream userLog; //creating file
 	userLog.open("userLogs.dat", ios::out | ios::app | ios::binary); //opening file in input mode, and ensuring previos work isnt erased
 
