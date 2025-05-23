@@ -6,7 +6,7 @@
 using namespace std;  
 
 class User {  
-private:  
+protected:  
    string name;  
    Date date;  
    short int cycleCount;  
@@ -20,7 +20,7 @@ public:
    // Setters  
    void setName();  
    void setDate();  
-   void setCycle();  
+   virtual void setCycle();  
    void setBeforeMood(Mood newMood);  
    void setAfterMood(Mood newMood);  
 
@@ -34,5 +34,7 @@ public:
    // Poly  
    virtual void displayInfo() const;  
    virtual void getSummary() const;  
+   virtual void setUser();
 
+   void logToFile(User& user);
 };
