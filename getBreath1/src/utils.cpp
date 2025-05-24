@@ -1,5 +1,4 @@
 #include "../include/Date.h"
-#include "../include/Mood.h"
 #include "../include/User.h"
 #include <iostream>
 #include <string>
@@ -7,6 +6,7 @@
 #include <memory>
 #include <fstream>
 #include <ctime>
+#include <stdexcept>
 #include <map>
 #include <unordered_map>
 #include <cstdlib>
@@ -17,17 +17,18 @@ using namespace std::chrono_literals;
 
 shared_ptr<vector<string>> getQuotes() {
 	fstream file;
-	file.open("Quotes.txt", ios::in);
+	file.open("C:\\Users\\Karol Suarez\\Desktop\\getBreath1\\getBreath1\\Quotes.txt", ios::in);
 	string str;
 	auto quotes = make_shared<vector<string>>();
 	if (!file.is_open()) {
 		cout << "File failed to open" << endl;
-		return 0;
+		return nullptr;
 	}
 	else {
-		while (getline(file, str))
+		while (getline(file, str)) {
 			//cout << str << endl;
 			quotes->push_back(str);
+		}
 		file.close();
 	}
 	return quotes;
@@ -37,6 +38,13 @@ void printQuotes(shared_ptr<vector<string>>quotes) {
 	srand(time(0));
 	int index = rand() % quotes->size();
 	cout << quotes->at(index) << endl;
+}
+void countdown(const int& num) {
+	this_thread::sleep_for(1s);// pause for 1 sec
+	for (int i = num; i >= 1;i--) {
+		cout << i << endl;
+		this_thread::sleep_for(1s);//pause for 1 sec
+	}
 }
 void timer(const int& cycles) {
 
@@ -52,30 +60,35 @@ void timer(const int& cycles) {
 
 	}
 }
-
-void countdown(const int& num) {
-	this_thread::sleep_for(1s);// pause for 1 sec
-	for (int i = num; i >= 1;i--) {
-		cout << i << endl;
-		this_thread::sleep_for(1s);//pause for 1 sec
-	}
-}
 void beginBreathing(const User& user) {
 	system("cls");
 	auto quotes = getQuotes();
+	if (quotes == nullptr) {
+		cout << "Error: Could not load quotes.";
+			return;
+	}
 	printQuotes(quotes);
 	timer(user.getCycle());
 	system("cls");
 }
 //in order to test
 bool isValidMood(short mood) {
-	return mood <= 5 && mood >= 1;
+	if (mood <= 5 && mood >= 1)
+		return true;
+	else
+		throw out_of_range("Cycles entered must be between 1-5. \n");
 }
 bool isValidCycle(short cycle) {
-	return cycle >= 1 && cycle <= 15;
+	if (cycle >= 1 && cycle <= 15)
+		return true;
+	else
+		throw out_of_range("Cycles entered must be between 1-15. \n");
 }
 bool isValidName(const string& name) {
-	return !name.empty() && name.length() <= 35;
+	if (!name.empty() && name.length() <= 35)
+		return true;
+	else
+		throw invalid_argument("Name is excessivly long. No more than 35 character. Please try again.\n");
 }
 
 
