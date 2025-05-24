@@ -1,8 +1,7 @@
 # getBreath (C++)
 _________________________
 A guided breathing and emotional check-in application written in C++.
-
-This project encourages users to pause, regulate their breathing and reflect on their mood. It demonstrates core C++ principles, including smart pointers, STL containers, struct-based data design, file handling, and unit testing with Google Test.
+This is a remake, but rewritten in Object-Oriented Programming (OOP, hence the branch name). This project encourages users to pause, regulate their breathing and reflect on their mood. It demonstrates core C++ principles, including smart pointers, STL containers, struct-based data design, file handling, and unit testing with Google Testing.
 
 ---
 
@@ -17,20 +16,19 @@ This project encourages users to pause, regulate their breathing and reflect on 
 - Binary file to store and read data
 - Unit tests for all key components using Google Test
 
-## 🧰 Project Structure
+## Project Structure
 
-getBreath/
+'getBreath/
 ├── include/ # Header files (Date.h, Mood.h, UserInfo.h, etc.)
 ├── src/ # Implementation files (main.cpp, beginBreathing.cpp, etc.)
 ├── test/ # Google Test unit tests (test_getBreath.cpp, etc.)
 ├── CMakeLists.txt # Build configuration
 ├── .gitignore # Git ignore rules
-
-├──  Quotes.txt # quotes file
+├──  Quotes.txt # quotes file'
 
 ---
 
-## ⚙️ Build Instructions (Windows PowerShell)
+## Build Instructions (Windows PowerShell)
 
 ### Prerequisites
 
