@@ -11,15 +11,15 @@ include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 #main
 add_executable(main_exec main.cpp 
-	src/beginBreathing.cpp
-	src/getFunctions.cpp
-	src/logUser.cpp
-)
+	
+	"src/utils.cpp"
+	
+ "src/User.cpp" "src/Date.cpp" "src/BasicUser.cpp" "include/BasicUser.h" "include/PremiumUser.h" "src/PremiumUser.cpp" )
 #test
-add_executable(test_exec src/beginBreathing.cpp 
-		src/getFunctions.cpp
-		src/logUser.cpp
-		test/test_main.cpp)
+add_executable(test_exec  
+		"src/utils.cpp"
+		
+		test/test_main.cpp "src/User.cpp" "src/Date.cpp" "src/BasicUser.cpp" "include/BasicUser.h" "include/PremiumUser.h" "src/PremiumUser.cpp" )
 
 
 target_link_libraries(test_exec gtest gtest_main)

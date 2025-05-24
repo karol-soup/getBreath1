@@ -13,7 +13,6 @@ TEST(getFunctionsTest, validMoodCheck_Exceptions) {
     EXPECT_TRUE(isValidMood(1));
     EXPECT_TRUE(isValidMood(4));
 }
-
 TEST(getFunctionsTest, invalidCycle_Exceptions) {
     EXPECT_THROW(isValidCycle(-23), std::out_of_range);
     EXPECT_THROW(isValidCycle(0), std::out_of_range);

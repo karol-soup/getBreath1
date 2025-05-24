@@ -11,15 +11,17 @@ using namespace std;
 
 int main()
 {
-	//User user;
-	//BasicUser user;
+
 	PremiumUser user;
 	user.setName();
 	user.setDate();
-	user.setCycle();
 	user.setBeforeMood();
+	user.setCycle();
 	beginBreathing(user);
-	user.getAfterMood();
+	user.setAfterMood();
+	user.displayInfo();
+	//user.logToFile(user);
+	//user.getSummary();
 	return 0;
 }
 

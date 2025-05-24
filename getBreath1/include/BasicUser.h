@@ -9,6 +9,5 @@ public:
     // overrides base class to show basic user
     void setCycle() override;
     void displayInfo() const override;
-    void getSummary() const override;
-    void setUser() override;
+
 };

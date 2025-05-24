@@ -48,7 +48,7 @@ void User::setCycle() {
 				cin.ignore(numeric_limits <streamsize>::max(), '\n');
 				throw invalid_argument("Invalid input. Please try again. \n");
 			}
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');//to discard any other input
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');//to discard any other input
 			isValidCycle(cycles);//will throw std::out_of_range if 'cycles' is invalid
 		   // If point, no exception was thrown, is valid.
 				this->cycleCount = cycles;
@@ -82,7 +82,7 @@ Mood User::getMood() const{
 				cin.ignore(numeric_limits<streamsize>::max(), '\n');
 				throw invalid_argument("Invalid input. Please try again. \n");
 			}
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //to discard anything else
+			cin.ignore(numeric_limits<streamsize>::max(), '\n'); //to discard anything else
 			isValidMood(mood);
 			return static_cast <Mood>(mood);
 			break;
