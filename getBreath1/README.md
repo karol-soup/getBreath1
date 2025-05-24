@@ -17,14 +17,15 @@ This is a remake, but rewritten in Object-Oriented Programming (OOP, hence the b
 - Unit tests for all key components using Google Test
 
 ## Project Structure
-
-'getBreath/
+''
+getBreath/
 ├── include/ # Header files (Date.h, Mood.h, UserInfo.h, etc.)
 ├── src/ # Implementation files (main.cpp, beginBreathing.cpp, etc.)
 ├── test/ # Google Test unit tests (test_getBreath.cpp, etc.)
 ├── CMakeLists.txt # Build configuration
 ├── .gitignore # Git ignore rules
-├──  Quotes.txt # quotes file'
+├──  Quotes.txt # quotes file
+''
 
 ---
 
