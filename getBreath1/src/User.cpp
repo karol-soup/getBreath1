@@ -48,11 +48,11 @@ void User::setCycle() {
 				cin.ignore(numeric_limits <streamsize>::max(), '\n');
 				throw invalid_argument("Invalid input. Please try again. \n");
 			}
-			isValidCycle(cycles); //will throw std::out_of_range if 'cycles' is invalid
-
-			// If point, no exception was thrown, is valid.
-			this->cycleCount = cycles; 
-			break; 
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');//to discard any other input
+			isValidCycle(cycles);//will throw std::out_of_range if 'cycles' is invalid
+		   // If point, no exception was thrown, is valid.
+				this->cycleCount = cycles;
+				break;
 		}
 			catch (const invalid_argument& e) {
 				cout << e.what() << endl;
@@ -82,6 +82,7 @@ Mood User::getMood() const{
 				cin.ignore(numeric_limits<streamsize>::max(), '\n');
 				throw invalid_argument("Invalid input. Please try again. \n");
 			}
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //to discard anything else
 			isValidMood(mood);
 			return static_cast <Mood>(mood);
 			break;
@@ -89,9 +90,10 @@ Mood User::getMood() const{
 		catch (const out_of_range& e) {
 			cout << e.what() << endl;
 		}
+		catch (const invalid_argument& e) {
+			cout << e.what() << endl;
+		}
 	}
-
-	
 }
 Mood User::getBeforeMood() const { return moodBefore; }
 Mood User::getAfterMood() const { return moodAfter; }
