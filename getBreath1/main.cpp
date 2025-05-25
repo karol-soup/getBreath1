@@ -19,9 +19,9 @@ int main()
 	user.setCycle();
 	beginBreathing(user);
 	user.setAfterMood();
-	user.displayInfo();
-	//user.logToFile(user);
-	//user.getSummary();
+	//user.displayInfo();
+	/ser.logToFile(user);
+	user.getSummary();
 	return 0;
 }
 

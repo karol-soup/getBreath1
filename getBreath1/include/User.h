@@ -51,7 +51,7 @@ public:
   // Poly  
   virtual void displayInfo() const;  
 
-  void getSummary() const;  
+  virtual void getSummary() const = 0;  
   void logToFile(User& user)const;
 
 

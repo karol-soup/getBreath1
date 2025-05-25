@@ -106,47 +106,6 @@ void User::displayInfo() const {
 	cout << "Before Mood: " << getBeforeMood() << endl;
 	cout << "After Mood: " << getAfterMood() << endl;
 }
-
-void User::getSummary() const {
-	fstream userLog("userLogs.dat", ios::in | ios::binary);//opening file in input mode, and ensuring previos work isnt erased
-	if (!userLog) {
-		cout << "Couldn't open file.\n";
-	}
-	else {
-		unordered_map<Mood, int> moodCounts;
-		auto users = make_unique<std::vector<User>>();
-		User user;
-		while (userLog.read(reinterpret_cast<char*>(&user), sizeof(user))) {
-			users->push_back(user);
-		}
-		userLog.close();
-		if (users->empty()) {
-			cout << "No log data on file.\n";
-		}
-		else {
-			cout << endl << getName() << "'s summary of log history\n";
-			cout << "Before taking a breath:\n";
-			for (const auto& user : *users) { // derefrenceing 
-				moodCounts[user.moodBefore]++; //will get mood(key) and add 1 each iteration of the same mood
-			}
-			for (const auto& pair : moodCounts) {
-
-				cout << "You felt: " << moodMap.at(pair.first) << " " << pair.second << " time(s)\n";
-
-			}
-			moodCounts.clear();
-			cout << "After taking a breath:\n";
-			for (const auto& user : *users) { // derefrenceing 
-				moodCounts[user.moodAfter]++; //will get mood(key) and add 1 each iteration of the same mood
-			}
-			for (const auto& pair : moodCounts) {
-				cout << "You felt: " << moodMap.at(pair.first) << " " << pair.second << " time(s)\n";
-			}
-			cout << "Remember you breathe from time to time :)\n";
-		}
-	}
-}
-
 void User::logToFile(User& user)const {
 	fstream userLog; //creating file
 	userLog.open("userLogs.dat", ios::out | ios::app | ios::binary); //opening file in input mode, and ensuring previos work isnt erased
