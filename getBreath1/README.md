@@ -19,17 +19,17 @@ This is a remake, but rewritten in Object-Oriented Programming (OOP, hence the b
 - Classes & Objects
   - There is a User, Date, premium, and basic class.
   -  User as a base class.
--Abstraction
+- Abstraction
   - User contains pure virtual functions like getSummary() and displayInfo(), which are overridden in PremiumUser and BasicUser.
--Encapsulation
+- Encapsulation
   - Kept class data private or protected, such as name, date, moodBefore, and moodAfter, so they could not be accessed directly from outside the class.
--Inheritance
+- Inheritance
   - PremiumUser and BasicUser both inherit from the User base class
--Polymorphism
+- Polymorphism
   -  Used virtual functions to allow different behaviors in derived classes while using a common pointer or reference to User
--Composition
+- Composition
   - Rather than inheriting from Date, the User class includes a Date object as a member to track when logs were created
--Introducing exception handling where appropriate
+- Introducing exception handling where appropriate
   - Used out_of_range, and logical_error
 
 ## Project Structure
@@ -68,3 +68,4 @@ build\Debug\test_exec.exe
 ```
 ### LINK TO VIDEO
 ---
+https://youtu.be/EwcjqAApkIU
